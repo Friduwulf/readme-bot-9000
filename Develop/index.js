@@ -1,27 +1,65 @@
-import inquirer from "inquirer"
-
-console.log('It runs')
+import inquirer from "inquirer";
+import fs from "fs";
+// const generateMarkdown = require('./utils/generateMarkdown.js');
+console.log('Welcome to README Bot 9000!');
+console.log('Please answer README Bot 9000`s questions to quickly and easily create a README for your project!');
 
 const questions = [
     {
         type: 'input',
         name: 'title',
-        message: 'Enter a title'
+        message: 'What is the title of your project?'
+    },
+    {
+        type: 'input',
+        name: 'description',
+        message: 'How would you describe your project?'
+    },
+    {
+        type: 'input',
+        name: 'installation',
+        message: 'How do you install your project?'
+    },
+    {
+        type: 'input',
+        name: 'usage',
+        message: 'What is the intended way to use your project?'
+    },
+    {
+        type: 'list',
+        name: 'license',
+        message: 'What license is your project covered under?',
+        choices: ['MIT', 'Apache License 2.0', 'GNU GPLv3', 'ISC License']
+    },
+    {
+        type: 'input',
+        name: 'contributing',
+        message: 'Who are the contributing parties to your project?'
+    },
+    {
+        type: 'input',
+        name: 'tests',
+        message: 'How do you test your project?'
+    },
+    {
+        type: 'input',
+        name: 'questions',
+        message: 'What is your GitHub username?'
     }
-]
+];
 
 function init() {
     inquirer.prompt(questions)
-    .then((answers) => {
-        console.log(answers)
-        return answers
+    .then((data) => {
+        console.log(data)
+        return data
     })
     .catch((error) => {
         console.log(error)
-    })
-}
+    });
+};
 
-init()
+init();
 
 
 
@@ -32,16 +70,6 @@ init()
 // // const fs = require('fs');
 // // const generateMarkdown = require('./utils/generateMarkdown.js');
 // console.log('Welcome to my README generator');
-
-// // TODO: Create an array of questions for user input
-// const questions = [
-//     {
-//         type: 'input',
-//         name: 'title',
-//         message: 'What is the title of the project?'
-//     }
-// ];
-
 // // TODO: Create a function to write README file
 // // function writeToFile(fileName, data) {
 // //     fs,writeToFile(fileName, data, (error) => {
