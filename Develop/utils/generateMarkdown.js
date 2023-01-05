@@ -42,8 +42,10 @@ function generateMarkdown(data) {
   ${data.tests}
 
   ## Questions
-  ${data.questions}
+  ${data.githubName}
+  ${data.email}
 `;
 }
 
-module.exports = generateMarkdown;
+export default generateMarkdown;
+// module.exports = generateMarkdown;
