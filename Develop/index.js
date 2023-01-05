@@ -29,7 +29,7 @@ const questions = [
         type: 'list',
         name: 'license',
         message: 'What license is your project covered under?',
-        choices: ['MIT', 'Apache License 2.0', 'GNU GPLv3', 'ISC License']
+        choices: ['MIT', 'Apache', 'GNU', 'ISC']
     },
     {
         type: 'input',
@@ -53,17 +53,6 @@ const questions = [
     }
 ];
 
-// function writeToFile() {
-//     fs.writeFile('README.md', readmeData, function(error) {
-//         if(error) {
-//             console.log('File was not able to be saved', error)
-//         } else {
-//             console.log('README Bot 9000 generated your README file successfully!')
-//         }
-//     });
-// };
-
-
 function init() {
     inquirer.prompt(questions)
     .then((data) => {
@@ -84,34 +73,3 @@ function init() {
 };
 
 init();
-
-
-
-
-
-// TODO: Include packages needed for this application
-
-// // TODO: Create a function to write README file
-// // function writeToFile(fileName, data) {
-// //     fs,writeToFile(fileName, data, (error) => {
-// //         if (error) {
-// //             return console.log(error);
-// //         }
-// //         console.log("It Worked");
-// //     });
-// // };
-
-// // TODO: Create a function to initialize app
-// function init() {
-//     return inquirer.prompt(questions)
-//     .then((answers) => {
-//         console.log(answers)
-//         return answers;
-//     })
-//     .catch((error) => {
-//         console.log(error)
-//     });
-// };
-
-// // Function call to initialize app
-// init();
