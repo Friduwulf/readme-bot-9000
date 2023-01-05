@@ -1,4 +1,4 @@
-function renderLicenseBadge(license) {
+ export function renderLicenseBadge(license) {
   const badgeObject = {
     MIT: '[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)',
     Apache: '[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)',
@@ -8,7 +8,7 @@ function renderLicenseBadge(license) {
   return badgeObject[license];
 };
 
-function renderLicenseLink(license) {
+export function renderLicenseLink(license) {
   const linksObject = {
     MIT: '[MIT](https://choosealicense.com/licenses/mit/)',
     Apache: '[APACHE](https://choosealicense.com/licenses/apache-2.0/)',
@@ -18,7 +18,7 @@ function renderLicenseLink(license) {
   return linksObject[license];
 };
 
-function renderLicenseSection(license) {
+export function renderLicenseSection(license) {
   if(license) {
     return `This project is licensed under the ${this.renderLicenseLink(license)} license.`
   } else {
@@ -26,7 +26,7 @@ function renderLicenseSection(license) {
   };
 };
 
-function generateMarkdown(data) {
+export function generateMarkdown(data) {
   return `
 # ${data.title}
 ${this.renderLicenseBadge(data.license)}
@@ -63,5 +63,3 @@ ${data.email}
 ${this.renderLicenseSection(data.license)}
   `;
 }
-
-export default generateMarkdown;
