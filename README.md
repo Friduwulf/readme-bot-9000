@@ -1,5 +1,5 @@
 
-# Test Project
+# README Bot 9000
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 
 ## Table of Contents
@@ -12,19 +12,19 @@
 - [License](#License)
 
 ## Description
-This is a test project
+This project is a fast and effective way to create README files. It uses inquirer to fill in the important information, and then builds a README.
 
 ## Installation
-By installing it
+npm install will install the required dependencies.
 
 ## Usage
-To test the project
+The intended way to use this project is to save time on creating README files for your github repositories. It keeps them consistant, and produces them quickly.
 
 ## Contributing
-Me
+Myself, and the UNB bootcamp staff who created the starter code.
 
 ## Tests
-By doing it
+npm test is how you test the code, there are no unit tests in place as of writing this.
 
 ## Questions
 Contact me at: 
