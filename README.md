@@ -7,6 +7,8 @@
 - [Installation](#Installation)
 - [Usage](#Usage)
 - [Contributing](#Contributing)
+- [Links](#Links)
+- [Screenshots](#Screenshots)
 - [Tests](#Tests)
 - [Questions](#Questions)
 - [License](#License)
@@ -22,6 +24,12 @@ The intended way to use this project is to save time on creating README files fo
 
 ## Contributing
 Myself, and the UNB bootcamp staff who created the starter code.
+
+## Links
+Github: https://github.com/Friduwulf/readme-bot-9000
+
+## Screenshots
+![image](https://user-images.githubusercontent.com/34720583/226223895-c002e8fe-8e10-4015-9154-7f7dcef9fc44.png)
 
 ## Tests
 npm test is how you test the code, there are no unit tests in place as of writing this.
