@@ -1,35 +1,56 @@
- export function renderLicenseBadge(license) {
-  const badgeObject = {
-    MIT: '[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)',
-    Apache: '[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)',
-    GNU: '[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)',
-    ISC: '[![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)'
-  };
-  return badgeObject[license];
-};
-
-export function renderLicenseLink(license) {
-  const linksObject = {
-    MIT: '[MIT](https://choosealicense.com/licenses/mit/)',
-    Apache: '[APACHE](https://choosealicense.com/licenses/apache-2.0/)',
-    GNU: '[GNUGLPv3](https://choosealicense.com/licenses/gpl-3.0/)',
-    ISC: '[ISC](https://choosealicense.com/licenses/isc/)'
-  };
-  return linksObject[license];
-};
-
-export function renderLicenseSection(license) {
-  if(license) {
-    return `This project is licensed under the ${this.renderLicenseLink(license)} license.`
-  } else {
+function renderLicenseBadge(license) {
+  let badge = '';
+  if (license === "None") {
     return '';
-  };
+  } else if (license == 'MIT') {
+    badge = `![License: ${license}](https://img.shields.io/badge/License-${license}-yellow.svg)`
+    return badge;
+  } else if (license == 'Apache') {
+    badge = `![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)`
+    return badge;
+  } else if (license == 'GPL') {
+    badge = `![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-red.svg)`
+    return badge;
+  } else if (license == 'BSD') {
+    badge = `![License: BSD v3](https://img.shields.io/badge/License-BSD%203--Clause-green.svg)`
+    return badge;
+  }
 };
 
-export function generateMarkdown(data) {
+function renderLicenseLink(license) {
+  let licenseLink = '';
+  if (license === "None") {
+    return '';
+    } else if (license == 'MIT') {
+      licenseLink = `https://mit-license.org/`;
+      return licenseLink;
+    } else if (license == 'Apache') {
+      licenseLink = `https://www.apache.org/licenses/LICENSE-2.0.html`;
+      return licenseLink;
+    } else if (license == 'GPL') {
+      licenseLink = `https://www.gnu.org/licenses/gpl-3.0.html`;
+      return licenseLink;
+    } else if (license == 'BSD') {
+      licenseLink = `https://opensource.org/licenses/BSD-3-Clause`;
+      return licenseLink;
+  }
+};
+
+function renderLicenseSection(license) {
+  const licenseSection = 
+  `${renderLicenseBadge(license)}
+  This project uses the ${license} license, for more information, go to: ${renderLicenseLink(license)}`
+  if (license === "None") {
+    return 'No license is in use.';
+  } else {
+    return licenseSection;
+  }
+};
+
+function generateMarkdown(data) {
   return `
 # ${data.title}
-${this.renderLicenseBadge(data.license)}
+${renderLicenseBadge(data.license)}
 
 ## Table of Contents
 - [Project Description](#Description)
@@ -56,10 +77,13 @@ ${data.contributing}
 ${data.tests}
 
 ## Questions
-${data.githubName}
-${data.email}
+Contact me at: 
+Github: https://github.com/${data.githubName}
+Email: ${data.email}
 
 ## License
-${this.renderLicenseSection(data.license)}
+${renderLicenseSection(data.license)}
   `;
-}
+};
+
+module.exports = generateMarkdown;

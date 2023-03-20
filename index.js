@@ -1,6 +1,6 @@
-import inquirer from "inquirer";
-import fs from "fs";
-import generateMarkdown from './utils/generateMarkdown.js';
+const inquirer = require('inquirer');
+const fs = require('fs');
+const generateMarkdown = require('./utils/generateMarkdown');
 console.log('Welcome to README Bot 9000!');
 console.log('Please answer README Bot 9000`s questions to quickly and easily create a README for your project!');
 
@@ -29,7 +29,7 @@ const questions = [
         type: 'list',
         name: 'license',
         message: 'What license is your project covered under?',
-        choices: ['MIT', 'Apache', 'GNU', 'ISC']
+        choices: ['MIT', 'Apache', 'GPL', 'BSD', 'None']
     },
     {
         type: 'input',
@@ -54,22 +54,16 @@ const questions = [
 ];
 
 function init() {
-    inquirer.prompt(questions)
-    .then((data) => {
-        const readmeData = generateMarkdown(data);
-        fs.writeFile('README.md', readmeData, function(error) {
-                    if(error) {
-                        console.log('File was not able to be saved', error)
-                    } else {
-                        console.log('README Bot 9000 generated your README file successfully!')
-                    }
-                });
-        console.log(readmeData);
-        return data;
-    })
-    .catch((error) => {
-        console.log(error)
-    });
+    inquirer.prompt(questions).then((data) => writeToFile('README.md', data))
+    .then(() => console.log('READMEBOT 9000 has created your README.md file!'))
+    .catch((err) => console.log(err));
+};
+
+function writeToFile(fileName, data) {
+    fs.writeFile(
+        fileName, 
+        generateMarkdown(data), 
+        (err) => console.log(err));
 };
 
 init();
